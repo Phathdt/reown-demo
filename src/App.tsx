@@ -1,21 +1,29 @@
-import { useAccount } from 'wagmi'
-
 import {
-  useAppKit,
-  useAppKitAccount,
-  useAppKitEvents,
-  useAppKitState,
-} from '@reown/appkit/react'
+    useAppKit, useAppKitAccount, useAppKitEvents, useAppKitNetwork, useAppKitState, useDisconnect
+} from '@reown/appkit/react';
+
+import { networks } from './config';
 
 export default function App() {
   const modal = useAppKit()
   const state = useAppKitState()
   const events = useAppKitEvents()
+  const { switchNetwork } = useAppKitNetwork()
+
   return (
     <div>
+      <button onClick={() => switchNetwork(networks[0])}>
+        Switch to mainnet
+      </button>
+      <button onClick={() => switchNetwork(networks[3])}>
+        Switch to solana
+      </button>
       <button onClick={() => modal.open()}>Connect Wallet</button>
       <button onClick={() => modal.open({ view: 'Networks' })}>
         Choose Network
+      </button>
+      <button onClick={() => modal.open({ view: 'Account' })}>
+        Choose Account
       </button>
       <WagmiHooks />
       <pre>{JSON.stringify(state, null, 2)}</pre>
@@ -25,15 +33,17 @@ export default function App() {
 }
 
 export function WagmiHooks() {
-  const { address } = useAppKitAccount()
-  const { isConnected, chainId } = useAccount()
-
+  const { address, caipAddress, isConnected, status } = useAppKitAccount()
+  const { disconnect } = useDisconnect()
   return (
     <div>
       {isConnected ? (
         <div>
           <p>Address: {address}</p>
-          <p>Chain ID: {chainId}</p>
+          <p>caipAddress: {caipAddress}</p>
+          <p>status: {status}</p>
+
+          <button onClick={() => disconnect()}>Disconnect</button>
         </div>
       ) : (
         <p>Not connected</p>

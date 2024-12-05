@@ -6,7 +6,7 @@ import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import {
     AppKitNetwork, base, bitcoin, mainnet, solana, solanaDevnet, solanaTestnet
 } from '@reown/appkit/networks';
-import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets';
+import { PhantomWalletAdapter, TrustWalletAdapter } from '@solana/wallet-adapter-wallets';
 
 export const projectId = import.meta.env.VITE_PROJECT_ID
 if (!projectId) throw new Error('Project ID is undefined')
@@ -38,5 +38,5 @@ export const wagmiAdapter = new WagmiAdapter({
 })
 
 export const solanaWeb3JsAdapter = new SolanaAdapter({
-  wallets: [new PhantomWalletAdapter()],
+  wallets: [new PhantomWalletAdapter(), new TrustWalletAdapter()],
 })

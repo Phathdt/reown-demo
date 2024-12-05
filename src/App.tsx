@@ -22,9 +22,6 @@ export default function App() {
       <button onClick={() => modal.open({ view: 'Networks' })}>
         Choose Network
       </button>
-      <button onClick={() => modal.open({ view: 'Account' })}>
-        Choose Account
-      </button>
       <WagmiHooks />
       <pre>{JSON.stringify(state, null, 2)}</pre>
       <pre>{JSON.stringify(events, null, 2)}</pre>

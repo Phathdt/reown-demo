@@ -22,14 +22,14 @@ export default function App() {
       <button onClick={() => modal.open({ view: 'Networks' })}>
         Choose Network
       </button>
-      <WagmiHooks />
+      <WalletInfo />
       <pre>{JSON.stringify(state, null, 2)}</pre>
       <pre>{JSON.stringify(events, null, 2)}</pre>
     </div>
   )
 }
 
-export function WagmiHooks() {
+export function WalletInfo() {
   const { address, caipAddress, isConnected, status } = useAppKitAccount()
   const { disconnect } = useDisconnect()
   return (

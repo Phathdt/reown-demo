@@ -12,7 +12,7 @@ export const projectId = import.meta.env.VITE_PROJECT_ID
 if (!projectId) throw new Error('Project ID is undefined')
 
 export const metadata = {
-  name: 'Web3Modal',
+  name: 'Multi Chain Wallet',
   description: 'Web3Modal Example',
   url: 'https://web3modal.com',
   icons: ['https://avatars.githubusercontent.com/u/37784886'],

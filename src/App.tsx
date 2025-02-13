@@ -15,7 +15,13 @@ export default function App() {
       <button onClick={() => switchNetwork(networks[0])}>
         Switch to mainnet
       </button>
-      <button onClick={() => switchNetwork(networks[3])}>
+      <button onClick={() => switchNetwork(networks[1])}>
+        Switch to bitcoin
+      </button>
+      <button onClick={() => switchNetwork(networks[2])}>
+        Switch to bitcoin
+      </button>
+      <button onClick={() => switchNetwork(networks[4])}>
         Switch to solana
       </button>
       <button onClick={() => modal.open()}>Connect Wallet</button>
